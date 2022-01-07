@@ -1,0 +1,47 @@
+exclude: (^(.github)|.gitignore|LICENSE|Makefile|README.md|Setup.cfg|pyproject.toml|poetry.lock|Dockerfile)
+repos:
+  - repo: https://github.com/psf/black
+    rev: 21.10b0
+    hooks:
+      - id: black
+        args: [ --line-length=120, --skip-string-normalization ]
+        stages: [ commit, manual ]
+
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4
+    hooks:
+      - id: autoflake
+        args: [ --in-place, --ignore-init-module-imports, --remove-all-unused-imports, --remove-unused-variables ]
+        stages: [ commit, manual ]
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.9.3
+    hooks:
+      - id: isort
+        args: [ --profile=black, --force-grid-wrap=2, --lines-after-imports=2, --force-single-line, --line-length=120 ]
+        stages: [ commit, manual ]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.910-1
+    hooks:
+      - id: mypy
+        args: [ --config-file=setup.cfg ]
+        stages: [ commit, manual ]
+        additional_dependencies: [ types-pytz ]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+
+  - repo: https://github.com/deployed/pre_ticket
+    rev: 1.0.1
+    hooks:
+      - id: pre_ticket
+        language_version: python3.9
+        stages: [ commit-msg ]
+        args: [
+            '--regex=(?P<ticket>([A-Z]+[-_]\d+))-(?P<title>([a-zA-Z0-9-_]+))',
+            '--format=[{ticket}] {message}'
+        ]
