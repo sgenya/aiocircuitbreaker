@@ -46,3 +46,10 @@ coverage-report: coverage-combine
 
 coverage-html-report: coverage-combine
 	coverage html -d $(HTMLCOV)
+
+
+# ================================================================================
+# PYPI
+# ================================================================================
+build-package:
+	poetry build

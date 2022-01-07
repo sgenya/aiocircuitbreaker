@@ -11,9 +11,11 @@ exclude = '''
 
 [tool.poetry]
 name = "aiocircuitbreaker"
-version = "1.0.0"
-description = ""
-authors = ["Evgeny Solomatin"]
+version = "0.1.0"
+description = "This is an async Python implementation of the \"Circuit Breaker\" Pattern (http://martinfowler.com/bliki/CircuitBreaker.html)."
+authors = ["Evgeny Solomatin <solgenya@gmail.com>"]
+repository = "https://github.com/GenyaSol/aiocircuitbreaker"
+readme = 'README.rst'
 
 [tool.poetry.dependencies]
 python = "^3.9.0"

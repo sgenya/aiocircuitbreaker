@@ -1,0 +1,24 @@
+name: Publish to PYPI
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build ci image
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DH_USERNAME }}
+          password: ${{ secrets.DH_ACCESS_TOKEN }}
+      - run: docker build -t ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER -f ./Dockerfile .
+      - run: docker push ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker run --rm -i -w /tmp -v $(pwd):/tmp ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER make build-package && poetry publish --username ${{ secrets.PYPI_USERNAME }} --password ${{ secrets.PYPI_PASSWORD }}
