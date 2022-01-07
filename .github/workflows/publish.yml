@@ -21,4 +21,5 @@ jobs:
     needs: [ build ]
     steps:
       - uses: actions/checkout@v2
-      - run: docker run --rm -i -w /tmp -v $(pwd):/tmp ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER make build-package && poetry publish --username ${{ secrets.PYPI_USERNAME }} --password ${{ secrets.PYPI_PASSWORD }}
+      - run: docker run --rm -i -w /tmp -v $(pwd):/tmp ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER make build-package
+      - run: docker run --rm -i -w /tmp -v $(pwd):/tmp ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER poetry publish --username ${{ secrets.PYPI_USERNAME }} --password ${{ secrets.PYPI_PASSWORD }}
