@@ -1,4 +1,4 @@
-exclude: (^(.github)|.gitignore|LICENSE|Makefile|README.md|Setup.cfg|pyproject.toml|poetry.lock|Dockerfile)
+exclude: (^(.github)|.gitignore|LICENSE|Makefile|README.rst|Setup.cfg|pyproject.toml|poetry.lock|Dockerfile)
 repos:
   - repo: https://github.com/psf/black
     rev: 21.10b0
