@@ -31,4 +31,12 @@ jobs:
     needs: [ build ]
     steps:
       - uses: actions/checkout@v2
-      - run: docker run --rm -i -w /tmp -v $(pwd):/tmp ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER make test
+      - run: docker run --rm -i -w /tmp -v $(pwd):/tmp ${{ secrets.DH_USERNAME }}/aiocircuitbreaker:ci-$GITHUB_RUN_NUMBER make test-with-coverage-xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          files: ./coverage.xml
+          flags: unittests
+          verbose: true
