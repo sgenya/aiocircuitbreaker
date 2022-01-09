@@ -43,7 +43,7 @@ coverage-report: test-coverage
 	coverage report
 
 test-with-coverage-xml:
-	pytest --cov=./ --cov-report=xml
+	pytest --cov=./aiocircuitbreaker --cov-report=xml
 
 
 # ================================================================================
