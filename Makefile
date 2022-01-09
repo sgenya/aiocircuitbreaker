@@ -1,11 +1,9 @@
-TESTS_REPORT := $(CURDIR)/$(TMP)/tests
-HTMLCOV := $(TESTS_REPORT)/htmlcov
-
 clean:
 	find . -type d -name '.mypy_cache' -exec rm -rf {} +
 	find . -type d -name '__pycache__' -exec rm -rf {} +
 	find . -type d -name '*pytest_cache*' -exec rm -rf {} +
 	find . -type f -name "*.py[co]" -exec rm -rf {} +
+	find . -type f -name ".coverage" -exec rm -rf {} +
 
 
 build-dev-image:
@@ -38,14 +36,14 @@ format: install-pre-commit
 test:
 	pytest .
 
-coverage-combine:
-	coverage combine $(TESTS_REPORT)/*.cov
+test-coverage:
+	coverage run -m pytest .
 
-coverage-report: coverage-combine
+coverage-report: test-coverage
 	coverage report
 
-coverage-html-report: coverage-combine
-	coverage html -d $(HTMLCOV)
+test-with-coverage-xml:
+	pytest --cov=./ --cov-report=xml
 
 
 # ================================================================================
