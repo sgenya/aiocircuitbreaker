@@ -10,6 +10,9 @@ aiocircuitbreaker
 .. image:: https://github.com/GenyaSol/aiocircuitbreaker/actions/workflows/run-test.yml/badge.svg
     :target: https://github.com/GenyaSol/aiocircuitbreaker/actions/workflows/run-test.yml
 
+.. image:: https://github.com/GenyaSol/aiocircuitbreaker/actions/workflows/publish.yml/badge.svg
+    :target: https://github.com/GenyaSol/aiocircuitbreaker/actions/workflows/publish.yml
+
 This is an async Python implementation of the `circuitbreaker`__ library.
 
 .. _circuitbreaker: https://github.com/fabfuel/circuitbreaker
