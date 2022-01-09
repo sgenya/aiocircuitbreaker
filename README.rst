@@ -4,6 +4,9 @@ aiocircuitbreaker
 .. image:: https://img.shields.io/pypi/v/aiocircuitbreaker.svg
     :target: https://pypi.python.org/pypi/aiocircuitbreaker
 
+.. image:: https://codecov.io/gh/codecov/example-python/branch/master/graph/badge.svg
+    :target: https://app.codecov.io/gh/GenyaSol/aiocircuitbreaker
+
 This is an async Python implementation of the `circuitbreaker`__ library.
 
 .. _circuitbreaker: https://github.com/fabfuel/circuitbreaker
