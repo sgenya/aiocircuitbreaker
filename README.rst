@@ -4,6 +4,9 @@ aiocircuitbreaker
 .. image:: https://img.shields.io/pypi/v/aiocircuitbreaker.svg
     :target: https://pypi.python.org/pypi/aiocircuitbreaker
 
+.. |pypi-pyversions| image:: https://img.shields.io/pypi/pyversions/aiocircuitbreaker.svg
+    :target: https://pypi.python.org/pypi/aiocircuitbreaker
+
 .. image:: https://codecov.io/gh/GenyaSol/aiocircuitbreaker/branch/main/graph/badge.svg
     :target: https://app.codecov.io/gh/GenyaSol/aiocircuitbreaker
 
@@ -12,6 +15,9 @@ aiocircuitbreaker
 
 .. image:: https://github.com/GenyaSol/aiocircuitbreaker/actions/workflows/publish.yml/badge.svg
     :target: https://github.com/GenyaSol/aiocircuitbreaker/actions/workflows/publish.yml
+
+.. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/python/black
 
 This is an async Python implementation of the `circuitbreaker`__ library.
 
